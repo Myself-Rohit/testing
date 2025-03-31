@@ -42,8 +42,8 @@ function Signup() {
           />
           <p className="text-xs text-gray-600">
             Don't have an Account?
-            <Link className="text-indigo-500 ml-1" to="/signup">
-              Sign Up
+            <Link className="text-indigo-500 ml-1" to="/login">
+              Sign In
             </Link>
           </p>
           <button
@@ -51,11 +51,11 @@ function Signup() {
             className="bg-gradient-to-r hover:bg-gradient-to-l from-cyan-500 to-blue-500 py-2 px-7 rounded-full text-white font-semibold disabled:opacity-70"
             disabled={loading}
           >
-            {loading ? "loading..." : "Sign In"}
+            {loading ? "loading..." : "Sign Up"}
           </button>
         </form>
         <div className="flex-1 flex justify-center items-center text-white bg-gradient-to-l from-cyan-500 to-blue-500 py-5">
-          <h1 className="text-4xl font-bold">Glad to see you!</h1>
+          <h1 className="text-4xl font-bold">Create account</h1>
         </div>
       </div>
     </div>

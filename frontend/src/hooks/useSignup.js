@@ -10,7 +10,7 @@ const useSignup = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        `${import.meta.env.BASE_URL}/api/auth/signup`,
+        `${import.meta.env.VITE_API_URL}/api/auth/signup`,
         formData,
         {
           withCredentials: true,
