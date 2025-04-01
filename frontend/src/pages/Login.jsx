@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../hooks/useLogin.js";
+import { useSelector } from "react-redux";
 
 function Login() {
   const [formData, setFormData] = useState({});
   const { loading, login } = useLogin();
+  const user = useSelector((state) => state.user);
+  console.log("loginUser:", user);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
