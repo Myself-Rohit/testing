@@ -7,7 +7,6 @@ function Login() {
   const [formData, setFormData] = useState({});
   const { loading, login } = useLogin();
   const user = useSelector((state) => state.user);
-  console.log("loginUser:", user);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

@@ -2,20 +2,22 @@ import express from "express";
 import { updateUser } from "../controllers/user.controllers.js";
 import verifyToken from "../utils/verifyToken.js";
 import multer from "multer";
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "/uploads");
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, file.originalname + "-" + uniqueSuffix);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "backend/uploads/");
+//   },
+//   filename: function (req, file, cb) {
+//     const uniqueSuffix = Date.now();
+//     cb(null, uniqueSuffix + "-" + file.originalname);
+//   },
+// });
 
-const upload = multer({ storage: storage });
+const storage = multer.memoryStorage();
+
+const upload = multer({ storage });
 
 const router = express.Router();
 
-router.patch("/update", verifyToken, upload.single("image"), updateUser);
+router.patch("/update", verifyToken, upload.single("photo"), updateUser);
 
 export default router;

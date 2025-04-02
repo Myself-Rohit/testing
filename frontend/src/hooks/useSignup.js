@@ -2,10 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/authContext";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { setAuthUser } = useAuthContext();
   const signup = async (formData) => {
     try {
       setLoading(true);
@@ -17,8 +19,10 @@ const useSignup = () => {
         }
       );
       if (res.data) {
+        localStorage.setItem("loggedInUser", JSON.stringify(res.data));
+        setAuthUser(res.data);
+        navigate("/");
       }
-      navigate("/");
     } catch (error) {
       toast.error(
         error?.response?.data || error?.message || "Failed to signin!"
